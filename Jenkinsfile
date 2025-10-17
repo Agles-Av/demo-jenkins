@@ -4,6 +4,20 @@ pipeline {
     environment {
         PATH = '/opt/homebrew/bin:{$env.PATH}'
     }
+    stage('Verificando entorno') {
+    steps {
+        sh '''
+        echo "=== PATH ==="
+        echo $PATH
+        echo "=== Docker ==="
+        which docker || echo "Docker no encontrado"
+        echo "=== Docker Compose ==="
+        which docker-compose || echo "Docker Compose no encontrado"
+        which docker || docker --version || true
+        '''
+    }
+}
+
 
     stages {
         //Etapa para parar los servicios
