@@ -11,7 +11,7 @@ pipeline {
         stage('Parando los servicios'){
             steps {
                 sh'''
-                docker-compose -p demo down || true 
+                docker compose -p demo down || true 
                 '''
             }
         }
@@ -40,7 +40,7 @@ pipeline {
             steps {
                 echo 'Construyendo y desplegando'
                 sh '''
-                docker-compose up -d --build
+                docker compose up -d --build
                 '''
             }
         }
