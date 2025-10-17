@@ -7,6 +7,12 @@ pipeline {
     
 
     stages {
+        stage('Check') {
+    steps {
+        sh 'which sh || echo "No shell found"'
+    }
+}
+
 
         //Etapa para parar los servicios
         stage('Parando los servicios'){
