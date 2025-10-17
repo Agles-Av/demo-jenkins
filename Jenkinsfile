@@ -9,8 +9,7 @@ pipeline {
         //Etapa para parar los servicios
         stage('Parando los servicios'){
             steps {
-                echo 'Parando los servicios'
-                sh '''
+                sh'''
                 docker-compose -p demo down || true 
                 '''
             }
