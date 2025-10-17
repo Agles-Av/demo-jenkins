@@ -4,7 +4,10 @@ pipeline {
     environment {
         PATH = '/opt/homebrew/bin:{$env.PATH}'
     }
-    stage('Verificando entorno') {
+    
+
+    stages {
+        stage('Verificando entorno') {
     steps {
         sh '''
         echo "=== PATH ==="
@@ -18,8 +21,6 @@ pipeline {
     }
 }
 
-
-    stages {
         //Etapa para parar los servicios
         stage('Parando los servicios'){
             steps {
