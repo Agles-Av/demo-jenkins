@@ -11,7 +11,7 @@ pipeline {
         stage('Parando los servicios'){
             steps {
                 sh'''
-                docker compose -p demo down || true 
+                docker-compose -p demo down || true 
                 '''
             }
         }
