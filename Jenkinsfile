@@ -10,8 +10,8 @@ pipeline {
         //Etapa para parar los servicios
         stage('Parando los servicios'){
             steps {
-                sh'''
-                docker compose -p demo down || true 
+                sh '''
+                    docker compose -p demo down || true 
                 '''
             }
         }
@@ -20,12 +20,12 @@ pipeline {
             steps {
                 echo 'Eliminando imagenes anteriores'
                 sh '''
-                IMAGES=$(docker images --filter "label=com.docker.compose.project=demo" -q) 
-                if [ -n "$IMAGES" ]; then 
-                    docker rmi -f $IMAGES || true 
-                else 
-                    echo "No images to remove"
-                fi
+                    IMAGES=$(docker images --filter "label=com.docker.compose.project=demo" -q) 
+                    if [ -n "$IMAGES" ]; then 
+                        docker rmi -f $IMAGES || true 
+                    else 
+                        echo "No images to remove"
+                    fi
                 '''
             }
         }
@@ -40,7 +40,7 @@ pipeline {
             steps {
                 echo 'Construyendo y desplegando'
                 sh '''
-                docker compose up -d --build
+                    docker compose up -d --build
                 '''
             }
         }
